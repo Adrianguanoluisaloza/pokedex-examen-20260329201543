@@ -8,14 +8,15 @@
     <meta http-equiv="Expires" content="0">
     <title>Pokédex</title>
     <link rel="icon" href="data:,">
-    <link rel="stylesheet" href="styles.css?v=3a36925">
+    <link rel="stylesheet" href="styles.css?v=2026033005">
 </head>
 <body>
     <header class="topbar">
         <div class="wrap topbar-inner">
-            <div>
+            <div class="brand-copy">
+                <p class="eyebrow">Interfaz inspirada en hardware</p>
                 <h1>Pokédex</h1>
-                <p>Registro interactivo de criaturas</p>
+                <p>Referencia visual basada en la consola plegable clásica.</p>
             </div>
             <div class="leds" aria-hidden="true">
                 <span class="led led-blue"></span>
@@ -49,15 +50,22 @@
             </div>
 
             <div class="console-controls" aria-hidden="true">
+                <span class="nav-dot"></span>
+                <div class="mini-monitor">
+                    <span></span>
+                </div>
                 <div class="dpad">
                     <span class="dpad-v"></span>
                     <span class="dpad-h"></span>
                 </div>
+            </div>
+
+            <div class="panel-footer panel-footer-left" aria-hidden="true">
                 <div class="action-buttons">
-                    <span class="action a">A</span>
-                    <span class="action b">B</span>
+                    <span class="action action-red"></span>
+                    <span class="action action-blue"></span>
                 </div>
-                <div class="speaker">
+                <div class="speaker speaker-left">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -76,7 +84,10 @@
                 <span class="mini-light green"></span>
             </div>
 
-            <h2>Detalle del Pokémon</h2>
+            <div class="panel-title">
+                <h2>Detalle del Pokémon</h2>
+                <span class="title-accent"></span>
+            </div>
 
             <div class="screen-frame screen-detail">
                 <div id="pokemon-detail" class="detail-empty">
@@ -89,15 +100,21 @@
                     <span></span><span></span><span></span><span></span>
                     <span></span><span></span><span></span><span></span>
                 </div>
-                <div class="switch-row">
-                    <span class="switch"></span>
-                    <span class="switch"></span>
-                    <span class="dot"></span>
+                <div class="control-row">
+                    <span class="white-key white-key-left"></span>
+                    <span class="white-key white-key-right"></span>
+                    <span class="yellow-button"></span>
+                </div>
+                <div class="speaker speaker-right">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
         </aside>
     </main>
 
-    <script src="pokemon.js?v=3a36925" defer></script>
+    <script src="pokemon.js?v=2026033005" defer></script>
 </body>
 </html>
