@@ -88,21 +88,25 @@ p {
 .led-blue {
     color: #5ad9ff;
     background: #5ad9ff;
+    animation: ledBlinkBlue 1.7s ease-in-out infinite;
 }
 
 .led-red {
     color: #ff6f82;
     background: #ff6f82;
+    animation: ledBlinkRed 1.2s ease-in-out infinite;
 }
 
 .led-yellow {
     color: #ffde70;
     background: #ffde70;
+    animation: ledBlinkYellow 1.4s ease-in-out infinite;
 }
 
 .led-green {
     color: #8bf281;
     background: #8bf281;
+    animation: ledBlinkGreen 1.9s ease-in-out infinite;
 }
 
 .page-grid {
@@ -177,6 +181,7 @@ p {
         radial-gradient(circle at 50% 85%, #f4a4b5 0%, #f4a4b5 10%, transparent 11%),
         linear-gradient(180deg, #da1c46 0%, #9f1031 100%);
     box-shadow: var(--shadow);
+    animation: hingeGlow 2.3s ease-in-out infinite;
 }
 
 .panel-head {
@@ -238,10 +243,17 @@ p {
     font-size: 0.8rem;
     text-transform: uppercase;
     box-shadow: 0 3px 0 #0f5f9f;
+    transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease;
 }
 
 .btn:hover:not(:disabled) {
     transform: translateY(-1px);
+    filter: brightness(1.06);
+}
+
+.btn:active:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 #0f5f9f;
 }
 
 .btn:disabled {
@@ -280,6 +292,7 @@ p {
     color: var(--text-main);
     transition: border-color 0.15s ease, transform 0.12s ease;
     animation: slideIn 0.22s ease both;
+    animation-delay: calc(var(--stagger, 0) * 36ms);
 }
 
 .pokemon-item:hover {
@@ -336,6 +349,10 @@ p {
     padding: 12px;
     background: linear-gradient(180deg, var(--screen-2) 0%, var(--screen-1) 100%);
     color: var(--text-main);
+}
+
+.detail-enter {
+    animation: detailPop 280ms ease-out;
 }
 
 .detail-top {
@@ -470,6 +487,7 @@ p {
 .stat-fill {
     height: 100%;
     background: linear-gradient(90deg, #2ce4ff 0%, #ffd45d 100%);
+    transition: width 650ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .console-controls {
@@ -545,6 +563,20 @@ p {
     height: 5px;
     border-radius: 999px;
     background: linear-gradient(90deg, #1b2e42 0%, #3a5f83 100%);
+    transform-origin: left center;
+    animation: equalize 1.2s ease-in-out infinite;
+}
+
+.speaker span:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.speaker span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.speaker span:nth-child(4) {
+    animation-delay: 0.45s;
 }
 
 .right-console {
@@ -630,6 +662,63 @@ p {
     to {
         background-position: 4% 2%, 96% 98%, 52% 48%;
     }
+}
+
+@keyframes detailPop {
+    from {
+        opacity: 0;
+        transform: scale(0.985);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes hingeGlow {
+    0%,
+    100% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(1.08);
+    }
+}
+
+@keyframes equalize {
+    0%,
+    100% {
+        transform: scaleX(0.55);
+        opacity: 0.65;
+    }
+    50% {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+
+@keyframes ledBlinkBlue {
+    0%,
+    100% { box-shadow: 0 0 8px currentColor; }
+    50% { box-shadow: 0 0 18px currentColor; }
+}
+
+@keyframes ledBlinkRed {
+    0%,
+    100% { box-shadow: 0 0 7px currentColor; }
+    50% { box-shadow: 0 0 16px currentColor; }
+}
+
+@keyframes ledBlinkYellow {
+    0%,
+    100% { box-shadow: 0 0 7px currentColor; }
+    50% { box-shadow: 0 0 15px currentColor; }
+}
+
+@keyframes ledBlinkGreen {
+    0%,
+    100% { box-shadow: 0 0 7px currentColor; }
+    50% { box-shadow: 0 0 16px currentColor; }
 }
 
 @media (max-width: 980px) {

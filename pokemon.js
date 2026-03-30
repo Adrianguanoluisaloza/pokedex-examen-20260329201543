@@ -34,7 +34,7 @@ const clearActiveItems = () => {
 };
 
 const showDetail = (pokemon) => {
-    detailElement.className = 'detail-card';
+    detailElement.className = 'detail-card detail-enter';
     detailElement.textContent = '';
 
     const detailTop = document.createElement('div');
@@ -155,7 +155,8 @@ const showDetail = (pokemon) => {
         const fill = document.createElement('div');
         fill.className = 'stat-fill';
         const normalized = Math.max(4, Math.min(item.base_stat, 180));
-        fill.style.width = `${(normalized / 180) * 100}%`;
+        fill.style.width = '0%';
+        fill.dataset.target = `${(normalized / 180) * 100}%`;
         bar.appendChild(fill);
 
         row.append(label, value, bar);
@@ -163,6 +164,15 @@ const showDetail = (pokemon) => {
     });
 
     detailElement.append(detailTop, meta, chips, mediaRow, statsSection);
+
+    requestAnimationFrame(() => {
+        const statFills = detailElement.querySelectorAll('.stat-fill');
+        statFills.forEach((fill, index) => {
+            setTimeout(() => {
+                fill.style.width = fill.dataset.target || '0%';
+            }, index * 65);
+        });
+    });
 };
 
 const handlePokemonClick = async (event) => {
@@ -194,12 +204,13 @@ const handlePokemonClick = async (event) => {
 const renderList = (pokemons) => {
     listElement.textContent = '';
 
-    pokemons.forEach((pokemon) => {
+    pokemons.forEach((pokemon, index) => {
         const pokemonId = pokemon.url.split('/').filter(Boolean).pop();
         const item = document.createElement('li');
         const button = document.createElement('button');
         button.type = 'button';
         button.className = 'pokemon-item';
+        button.style.setProperty('--stagger', String(index));
         button.dataset.url = pokemon.url;
         button.addEventListener('click', handlePokemonClick);
 
