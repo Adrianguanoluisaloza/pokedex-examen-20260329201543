@@ -9,14 +9,22 @@
 </head>
 <body>
     <header class="topbar">
-        <div class="wrap">
-            <h1>Pokédex</h1>
-            <p>Explorador de Pokémon</p>
+        <div class="wrap topbar-inner">
+            <div>
+                <h1>Pokédex</h1>
+                <p>Registro interactivo de criaturas</p>
+            </div>
+            <div class="leds" aria-hidden="true">
+                <span class="led led-blue"></span>
+                <span class="led led-red"></span>
+                <span class="led led-yellow"></span>
+                <span class="led led-green"></span>
+            </div>
         </div>
     </header>
 
     <main class="wrap page-grid">
-        <section class="panel">
+        <section class="panel panel-left">
             <div class="panel-head">
                 <h2>Listado de Pokémon</h2>
                 <div class="pagination">
@@ -29,7 +37,7 @@
             <ul id="pokemon-list" class="pokemon-list" aria-label="Lista de pokemon"></ul>
         </section>
 
-        <aside class="panel" aria-live="polite">
+        <aside class="panel panel-right" aria-live="polite">
             <h2>Detalle del Pokémon</h2>
             <div id="pokemon-detail" class="detail-empty">
                 Selecciona un Pokémon de la lista para ver su detalle.

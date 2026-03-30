@@ -191,6 +191,7 @@ const renderList = (pokemons) => {
     listElement.textContent = '';
 
     pokemons.forEach((pokemon) => {
+        const pokemonId = pokemon.url.split('/').filter(Boolean).pop();
         const item = document.createElement('li');
         const button = document.createElement('button');
         button.type = 'button';
@@ -198,13 +199,22 @@ const renderList = (pokemons) => {
         button.dataset.url = pokemon.url;
         button.addEventListener('click', handlePokemonClick);
 
+        const left = document.createElement('div');
+        left.className = 'pokemon-item-left';
+
+        const idTag = document.createElement('small');
+        idTag.className = 'pokemon-id';
+        idTag.textContent = `#${String(pokemonId).padStart(4, '0')}`;
+
         const label = document.createElement('span');
         label.textContent = pokemon.name;
+        left.append(idTag, label);
 
         const hint = document.createElement('small');
+        hint.className = 'pokemon-action';
         hint.textContent = 'Ver detalle';
 
-        button.append(label, hint);
+        button.append(left, hint);
         item.appendChild(button);
         listElement.appendChild(item);
     });
