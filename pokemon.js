@@ -15,6 +15,10 @@ const state = {
 
 const toTitleCase = (text) => text.charAt(0).toUpperCase() + text.slice(1);
 
+const fetchOptions = {
+    cache: 'no-store'
+};
+
 const setStatus = (message) => {
     statusElement.textContent = message;
 };
@@ -108,7 +112,7 @@ const showDetail = (pokemon) => {
     chips.className = 'chips';
     pokemon.types.forEach((item) => {
         const chip = document.createElement('span');
-        chip.className = 'chip';
+        chip.className = `chip type-${item.type.name}`;
         chip.textContent = item.type.name;
         chips.appendChild(chip);
     });
@@ -170,7 +174,7 @@ const handlePokemonClick = async (event) => {
     setStatus('Cargando detalle...');
 
     try {
-        const response = await fetch(detailUrl);
+        const response = await fetch(detailUrl, fetchOptions);
         if (!response.ok) {
             throw new Error('No se pudo cargar el detalle del pokemon.');
         }
@@ -224,7 +228,7 @@ const loadPokemons = async (url = API_URL) => {
     setStatus('Cargando lista de Pokémon...');
 
     try {
-        const response = await fetch(url);
+        const response = await fetch(url, fetchOptions);
         if (!response.ok) {
             throw new Error('No se pudo obtener la lista de pokemon.');
         }

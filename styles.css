@@ -29,6 +29,7 @@ body {
         linear-gradient(165deg, #530016 0%, #210010 100%);
     color: #fff;
     min-height: 100vh;
+    animation: ambientShift 8s ease-in-out infinite alternate;
 }
 
 h1,
@@ -56,6 +57,7 @@ p {
     justify-content: space-between;
     align-items: center;
     box-shadow: var(--shadow);
+    animation: shellPulse 3s ease-in-out infinite;
 }
 
 .topbar h1 {
@@ -198,6 +200,22 @@ p {
     background: linear-gradient(170deg, var(--bezel-1) 0%, var(--bezel-2) 100%);
     padding: 10px;
     box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.55);
+    position: relative;
+    overflow: hidden;
+}
+
+.screen-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.02) 0px,
+        rgba(255, 255, 255, 0.02) 2px,
+        rgba(0, 0, 0, 0.04) 3px,
+        rgba(0, 0, 0, 0.04) 4px
+    );
 }
 
 .screen-detail {
@@ -261,6 +279,7 @@ p {
     cursor: pointer;
     color: var(--text-main);
     transition: border-color 0.15s ease, transform 0.12s ease;
+    animation: slideIn 0.22s ease both;
 }
 
 .pokemon-item:hover {
@@ -332,6 +351,7 @@ p {
     border-radius: 10px;
     border: 1px solid #2d5a84;
     background: radial-gradient(circle at 50% 32%, #143559 0%, #071a31 75%);
+    animation: floatMon 2.2s ease-in-out infinite;
 }
 
 .detail-name {
@@ -378,6 +398,25 @@ p {
     font-size: 0.76rem;
     text-transform: capitalize;
 }
+
+.type-fire { background: #5a2a19; border-color: #f97f51; color: #ffd9c8; }
+.type-water { background: #113257; border-color: #3ca9ff; color: #d3ecff; }
+.type-grass { background: #183a2f; border-color: #45d483; color: #d7ffe9; }
+.type-electric { background: #58440c; border-color: #ffd559; color: #fff3cf; }
+.type-ice { background: #214957; border-color: #6be6ff; color: #ddf9ff; }
+.type-fighting { background: #4b2323; border-color: #ff8e8e; color: #ffdede; }
+.type-poison { background: #452259; border-color: #df8aff; color: #f4ddff; }
+.type-ground { background: #51361e; border-color: #e7ae67; color: #ffe9d2; }
+.type-flying { background: #223f62; border-color: #8ec5ff; color: #deeeff; }
+.type-psychic { background: #5a1f4b; border-color: #ff8ed8; color: #ffe3f7; }
+.type-bug { background: #344818; border-color: #a7d65e; color: #efffd6; }
+.type-rock { background: #493f2a; border-color: #d2bb81; color: #fff3d8; }
+.type-ghost { background: #2f2f64; border-color: #a6a6ff; color: #ececff; }
+.type-dragon { background: #252a66; border-color: #7ea5ff; color: #e4ecff; }
+.type-dark { background: #2f2b2b; border-color: #9b9191; color: #eee6e6; }
+.type-steel { background: #2b4459; border-color: #8fb8d6; color: #e2f2ff; }
+.type-fairy { background: #5d2f4d; border-color: #ffa8d8; color: #ffe6f3; }
+.type-normal { background: #2e4053; border-color: #9db0c5; color: #eaf4ff; }
 
 .media-row {
     margin-top: 10px;
@@ -550,6 +589,47 @@ p {
     border-radius: 999px;
     background: linear-gradient(180deg, #ffd95f 0%, #df9f17 100%);
     border: 1px solid #7f5600;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatMon {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes shellPulse {
+    0% {
+        box-shadow: var(--shadow);
+    }
+    100% {
+        box-shadow: 0 22px 64px rgba(4, 8, 18, 0.58);
+    }
+}
+
+@keyframes ambientShift {
+    from {
+        background-position: 0% 0%, 100% 100%, 50% 50%;
+    }
+    to {
+        background-position: 4% 2%, 96% 98%, 52% 48%;
+    }
 }
 
 @media (max-width: 980px) {
