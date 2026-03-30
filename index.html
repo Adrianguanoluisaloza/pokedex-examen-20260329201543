@@ -33,16 +33,44 @@
                 </div>
             </div>
 
-            <p id="status" class="status" role="status">Cargando Pokémon...</p>
-            <ul id="pokemon-list" class="pokemon-list" aria-label="Lista de pokemon"></ul>
+            <div class="screen-frame">
+                <p id="status" class="status" role="status">Cargando Pokémon...</p>
+                <ul id="pokemon-list" class="pokemon-list" aria-label="Lista de pokemon"></ul>
+            </div>
+
+            <div class="console-controls" aria-hidden="true">
+                <div class="dpad">
+                    <span class="dpad-v"></span>
+                    <span class="dpad-h"></span>
+                </div>
+                <div class="action-buttons">
+                    <span class="action a">A</span>
+                    <span class="action b">B</span>
+                </div>
+                <div class="speaker">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
         </section>
 
         <div class="hinge" aria-hidden="true"></div>
 
         <aside class="panel panel-right" aria-live="polite">
             <h2>Detalle del Pokémon</h2>
-            <div id="pokemon-detail" class="detail-empty">
-                Selecciona un Pokémon de la lista para ver su detalle.
+
+            <div class="screen-frame screen-detail">
+                <div id="pokemon-detail" class="detail-empty">
+                    Selecciona un Pokémon de la lista para ver su detalle.
+                </div>
+            </div>
+
+            <div class="ports" aria-hidden="true">
+                <span class="port"></span>
+                <span class="port"></span>
+                <span class="port long"></span>
             </div>
         </aside>
     </main>

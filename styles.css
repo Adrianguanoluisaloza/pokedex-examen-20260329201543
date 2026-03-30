@@ -160,6 +160,18 @@ p {
     margin-bottom: 12px;
 }
 
+.screen-frame {
+    background: linear-gradient(170deg, #e5eefb 0%, #cdddf3 100%);
+    border: 3px solid #7a9cbf;
+    border-radius: 14px;
+    padding: 12px;
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.8);
+}
+
+.screen-detail {
+    min-height: 472px;
+}
+
 .panel h2 {
     font-size: 1.22rem;
     text-transform: uppercase;
@@ -203,6 +215,7 @@ p {
     border-radius: 10px;
     padding: 8px 10px;
     margin-bottom: 14px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .pokemon-list {
@@ -277,6 +290,99 @@ p {
 
 #pokemon-detail {
     min-height: 420px;
+}
+
+.console-controls {
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: 80px 1fr 90px;
+    gap: 12px;
+    align-items: center;
+}
+
+.dpad {
+    width: 68px;
+    height: 68px;
+    position: relative;
+}
+
+.dpad-v,
+.dpad-h {
+    position: absolute;
+    background: linear-gradient(180deg, #2d3f52 0%, #162331 100%);
+    border-radius: 6px;
+    border: 1px solid #0f1a25;
+}
+
+.dpad-v {
+    width: 24px;
+    height: 68px;
+    left: 22px;
+    top: 0;
+}
+
+.dpad-h {
+    width: 68px;
+    height: 24px;
+    left: 0;
+    top: 22px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+}
+
+.action {
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    border: 2px solid rgba(0, 0, 0, 0.32);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.86rem;
+    box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.24);
+}
+
+.action.a {
+    background: linear-gradient(180deg, #36b8ff 0%, #1570d7 100%);
+}
+
+.action.b {
+    background: linear-gradient(180deg, #ffd75a 0%, #e59f18 100%);
+}
+
+.speaker {
+    display: grid;
+    gap: 6px;
+}
+
+.speaker span {
+    height: 5px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #1a2c3d 0%, #456887 100%);
+}
+
+.ports {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+.port {
+    width: 34px;
+    height: 10px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #1f3145 0%, #0f1d2d 100%);
+    border: 1px solid #07111c;
+}
+
+.port.long {
+    width: 74px;
 }
 
 .detail-top {
@@ -401,5 +507,14 @@ p {
 
     .hinge {
         display: none;
+    }
+
+    .screen-detail {
+        min-height: auto;
+    }
+
+    .console-controls {
+        grid-template-columns: 1fr;
+        justify-items: center;
     }
 }
